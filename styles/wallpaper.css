@@ -41,9 +41,14 @@ html[data-theme="dark"] .wallpaper::after {
 .blobs {
   position: absolute;
   inset: 0;
-  filter: url(#wp-goo);
-  -webkit-filter: url(#wp-goo);
+  filter: url(#wp-goo-light);
+  -webkit-filter: url(#wp-goo-light);
   pointer-events: none;
+}
+
+html[data-theme="dark"] .blobs {
+  filter: url(#wp-goo-dark);
+  -webkit-filter: url(#wp-goo-dark);
 }
 
 .blob {
