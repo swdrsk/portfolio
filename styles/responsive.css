@@ -1,0 +1,58 @@
+/* ============================================================
+ *  responsive.css — adaptive layout fallback
+ *
+ *  Desktop OS-style absolute layout requires ≥1660w × ≥820h.
+ *  Below that, switch to a clean stacked vertical column.
+ * ============================================================ */
+
+@media (max-width: 1659px), (max-height: 1039px) {
+  body { overflow: auto; }
+  .desktop {
+    position: static;
+    padding: 44px 16px 100px;
+    min-height: auto;
+    overflow: visible;
+  }
+  .windows {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .window {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    --w: 100% !important;
+    max-height: none;
+  }
+  .titlebar { cursor: default; }
+  .dock {
+    bottom: 10px;
+    border-radius: 18px;
+    /* no overflow clipping — tooltips need to escape upward */
+  }
+  .dockicon { width: 48px; height: 48px; flex-shrink: 0; }
+  .menu-item { padding: 0 8px; font-size: 12px; }
+  .display { font-size: clamp(44px, 9vw, 64px); }
+  .terminal-body { min-height: 320px; max-height: 460px; }
+}
+
+/* drop optional menu items on very narrow screens */
+@media (max-width: 640px) {
+  .menubar-left .menu-item:not(.menu-apple):not(.menu-app) { display: none; }
+  .menubar-right .menu-pill[aria-label="Battery"],
+  .menubar-right .menu-pill[aria-label="Wi-Fi"],
+  .menubar-right .menu-pill[aria-label="Search"] { display: none; }
+  .windows { max-width: 100%; }
+  .display { font-size: clamp(36px, 11vw, 56px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .dockicon .di-glyph {
+    animation: none !important;
+  }
+}

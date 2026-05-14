@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Ryosuke Sawada Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Ryosuke Sawada (swdrsk) — backend & AI engineer specializing in Python, AWS, and applied AI." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Unbounded:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/wallpaper.css" />
+  <link rel="stylesheet" href="styles/chrome.css" />
+  <link rel="stylesheet" href="styles/windows.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+
+<body>
+  <!--
+    SVG sprite — inline so <use href="#id"> works under file:// where
+    external SVG fragment refs are blocked by browser security.
+    Add or update symbols inside <defs> below.
+  -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <defs>
+      <symbol id="r-tile" viewBox="0 0 200 200">
+        <path d="M60 60
+                 C 60 50, 70 40, 85 40
+                 L 115 40
+                 C 130 40, 140 50, 140 60
+                 L 140 90
+                 C 140 100, 130 110, 115 110
+                 L 85 110
+                 C 70 110, 60 120, 60 130
+                 L 60 160
+                 L 90 160
+                 M 115 110
+                 L 140 160" stroke="currentColor" stroke-width="24" fill="none" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+      <symbol id="battery" viewBox="0 0 22 12">
+        <rect x="0.5" y="0.5" width="18" height="11" rx="2.5" fill="none" stroke="currentColor" />
+        <rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor" />
+        <rect x="19.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" />
+      </symbol>
+      <symbol id="wifi" viewBox="0 0 16 12">
+        <path d="M8 11l-2-2a2.8 2.8 0 0 1 4 0z" fill="currentColor" />
+        <path d="M8 7.5l-4-4a5.6 5.6 0 0 1 8 0z" fill="none" stroke="currentColor" stroke-width="1.4"
+          stroke-linecap="round" />
+        <path d="M8 4l-6-6a8.4 8.4 0 0 1 12 0z" fill="none" stroke="currentColor" stroke-width="1.4"
+          stroke-linecap="round" transform="translate(0 6)" />
+      </symbol>
+      <symbol id="search" viewBox="0 0 14 14">
+        <circle cx="6" cy="6" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <line x1="9.5" y1="9.5" x2="13" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+      </symbol>
+      <symbol id="sun" viewBox="0 0 16 16">
+        <circle cx="8" cy="8" r="3.2" fill="currentColor" />
+        <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <line x1="8" y1="1" x2="8" y2="3" />
+          <line x1="8" y1="13" x2="8" y2="15" />
+          <line x1="1" y1="8" x2="3" y2="8" />
+          <line x1="13" y1="8" x2="15" y2="8" />
+          <line x1="2.7" y1="2.7" x2="4.2" y2="4.2" />
+          <line x1="11.8" y1="11.8" x2="13.3" y2="13.3" />
+          <line x1="2.7" y1="13.3" x2="4.2" y2="11.8" />
+          <line x1="11.8" y1="4.2" x2="13.3" y2="2.7" />
+        </g>
+      </symbol>
+      <symbol id="moon" viewBox="0 0 16 16">
+        <path d="M13.2 10.4A6 6 0 0 1 5.6 2.8a6 6 0 1 0 7.6 7.6z" fill="currentColor" />
+      </symbol>
+      <symbol id="dock-readme" viewBox="0 0 24 28">
+        <path d="M3 2h13l5 5v19a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" fill="#fff" />
+        <path d="M16 2v5h5" fill="none" stroke="#cdd0d4" stroke-width="1" />
+        <line x1="6" y1="12" x2="18" y2="12" stroke="#9aa1aa" stroke-width="1.2" stroke-linecap="round" />
+        <line x1="6" y1="15.5" x2="18" y2="15.5" stroke="#9aa1aa" stroke-width="1.2" stroke-linecap="round" />
+        <line x1="6" y1="19" x2="14" y2="19" stroke="#9aa1aa" stroke-width="1.2" stroke-linecap="round" />
+      </symbol>
+      <symbol id="dock-career" viewBox="0 0 32 28">
+        <rect x="2" y="6" width="28" height="20" rx="3" fill="#ff8b3d" />
+        <rect x="2" y="6" width="28" height="6" fill="#ffae73" />
+        <path d="M11 6V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" fill="none" stroke="#fff" stroke-width="1.6" />
+        <circle cx="16" cy="17" r="2" fill="#fff" />
+      </symbol>
+      <symbol id="dock-skills" viewBox="0 0 32 32">
+        <rect x="2" y="2" width="28" height="28" rx="7" fill="#5856d6" />
+        <rect x="6" y="14" width="4" height="12" rx="1" fill="#fff" />
+        <rect x="14" y="9" width="4" height="17" rx="1" fill="#fff" />
+        <rect x="22" y="5" width="4" height="21" rx="1" fill="#fff" />
+      </symbol>
+      <symbol id="dock-projects" viewBox="0 0 32 28">
+        <path d="M2 8h11l3 3h14v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z" fill="#54c2ff" />
+        <path d="M2 8h11l3 3h14v3H2z" fill="#3aa8e7" />
+      </symbol>
+      <symbol id="dock-terminal" viewBox="0 0 32 28">
+        <rect x="2" y="2" width="28" height="24" rx="5" fill="#1a1a1d" />
+        <rect x="2" y="2" width="28" height="6" rx="5" fill="#3a3a3f" />
+        <circle cx="6" cy="5" r="1.2" fill="#ff5f57" />
+        <circle cx="10" cy="5" r="1.2" fill="#febc2e" />
+        <circle cx="14" cy="5" r="1.2" fill="#28c840" />
+        <path d="M6 14l4 3-4 3" fill="none" stroke="#73f59f" stroke-width="1.4" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <line x1="13" y1="20" x2="22" y2="20" stroke="#73f59f" stroke-width="1.4" stroke-linecap="round" />
+      </symbol>
+      <symbol id="dock-contact" viewBox="0 0 32 28">
+        <rect x="2" y="2" width="28" height="24" rx="4" fill="#f5f5f7" />
+        <path d="M2 4l14 11L30 4" fill="none" stroke="#0a84ff" stroke-width="1.8" stroke-linejoin="round" />
+        <path d="M2 4l14 11L30 4 30 4z" fill="#cfe6ff" opacity="0.5" />
+      </symbol>
+      <symbol id="dock-github" viewBox="0 0 32 32">
+        <rect x="2" y="2" width="28" height="28" rx="7" fill="#0f0f10" />
+        <path fill="#fff"
+          d="M16 7.5c-4.7 0-8.5 3.8-8.5 8.5 0 3.8 2.4 7 5.8 8.1.4.1.6-.2.6-.4v-1.5c-2.4.5-2.9-1.1-2.9-1.1-.4-1-.9-1.3-.9-1.3-.8-.5.1-.5.1-.5.9.1 1.3.9 1.3.9.8 1.3 2 1 2.5.7.1-.6.3-1 .6-1.2-1.9-.2-3.9-1-3.9-4.2 0-.9.3-1.7.9-2.3-.1-.2-.4-1.1.1-2.3 0 0 .7-.2 2.4.9.7-.2 1.5-.3 2.2-.3s1.5.1 2.2.3c1.7-1.1 2.4-.9 2.4-.9.5 1.2.2 2.1.1 2.3.6.6.9 1.4.9 2.3 0 3.3-2 4-3.9 4.2.3.3.6.8.6 1.6v2.4c0 .2.2.5.6.4 3.4-1.1 5.8-4.3 5.8-8.1 0-4.7-3.8-8.5-8.5-8.5z" />
+      </symbol>
+      <symbol id="dock-trash" viewBox="0 0 28 32">
+        <rect x="2" y="7" width="24" height="22" rx="3" fill="#c6cad0" />
+        <rect x="0" y="5" width="28" height="3" rx="1" fill="#9ea3ab" />
+        <path d="M10 4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" fill="none" stroke="#9ea3ab" stroke-width="1.4" />
+        <line x1="9" y1="12" x2="9" y2="25" stroke="#fff" stroke-width="1.4" stroke-linecap="round" />
+        <line x1="14" y1="12" x2="14" y2="25" stroke="#fff" stroke-width="1.4" stroke-linecap="round" />
+        <line x1="19" y1="12" x2="19" y2="25" stroke="#fff" stroke-width="1.4" stroke-linecap="round" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Animated wallpaper — soft metaball cloud (SVG goo filter) -->
+  <div class="wallpaper" aria-hidden="true">
+    <svg class="goo-defs" aria-hidden="true" focusable="false">
+      <defs>
+        <!-- Goo merge + volumetric 3D shading
+               Center is brightest; edges fade to dark (rim shadow). -->
+        <filter id="wp-goo" x="-15%" y="-15%" width="130%" height="130%">
+          <!-- 1. Soft blur — serves both as merge basis AND height map -->
+          <feGaussianBlur in="SourceGraphic" stdDeviation="22" result="blur" />
+
+          <!-- 2. Alpha threshold for crisp merged shape (carries source color) -->
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 20 -9" result="goo" />
+
+          <!-- 3. Diffuse lighting from above — uses blurred alpha as a
+                    height map. Peak of each blob (center) faces the light
+                    directly = bright; slopes (edges) face away = dark. -->
+          <feDiffuseLighting in="blur" surfaceScale="32" diffuseConstant="1.35" lighting-color="#ffffff"
+            result="diffuse">
+            <feDistantLight azimuth="130" elevation="60" />
+          </feDiffuseLighting>
+          <feComposite in="diffuse" in2="goo" operator="in" result="diffMasked" />
+
+          <!-- 4. Specular sheen — small bright glint on the upper face -->
+          <feSpecularLighting in="blur" surfaceScale="14" specularConstant="0.55" specularExponent="22"
+            lighting-color="#ffffff" result="spec">
+            <feDistantLight azimuth="135" elevation="58" />
+          </feSpecularLighting>
+          <feComposite in="spec" in2="goo" operator="in" result="specMasked" />
+
+          <!-- 5. goo × diffuse  →  darkens edges (rim shadow);
+                    + specular     →  adds top-left highlight -->
+          <feBlend in="goo" in2="diffMasked" mode="multiply" result="shaded" />
+          <feBlend in="shaded" in2="specMasked" mode="screen" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="blobs">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="blob blob--3"></span>
+      <span class="blob blob--4"></span>
+      <span class="blob blob--5"></span>
+      <span class="blob blob--6"></span>
+      <span class="blob blob--7"></span>
+      <span class="blob blob--8"></span>
+      <span class="blob blob--9"></span>
+      <span class="blob blob--10"></span>
+      <span class="blob blob--11"></span>
+      <span class="blob blob--12"></span>
+    </div>
+    <div class="wallpaper-noise"></div>
+  </div>
+
+  <!-- Boot sequence -->
+  <section class="boot" id="boot" aria-hidden="true">
+    <div class="boot-inner">
+      <svg class="boot-logo" viewBox="0 0 24 24" width="76" height="76" aria-hidden="true">
+        <use href="#r-tile" />
+      </svg>
+      <div class="boot-bar"><span></span></div>
+    </div>
+  </section>
+
+  <!-- Menu bar -->
+  <header class="menubar">
+    <div class="menubar-left">
+      <button class="menu-item menu-apple" aria-label="swdrsk menu">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+          <use href="#r-tile" />
+        </svg>
+      </button>
+      <button class="menu-item menu-app">swdrsk</button>
+      <button class="menu-item">File</button>
+      <button class="menu-item">Edit</button>
+      <button class="menu-item">View</button>
+      <button class="menu-item">Window</button>
+      <button class="menu-item">Help</button>
+    </div>
+    <div class="menubar-right">
+      <button class="menu-pill lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-label"></span>
+      </button>
+      <button class="menu-pill theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+          <use href="#sun" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+          <use href="#moon" />
+        </svg>
+      </button>
+      <button class="menu-pill" aria-label="Battery">
+        <svg viewBox="0 0 22 12" width="22" height="12" aria-hidden="true">
+          <use href="#battery" />
+        </svg>
+      </button>
+      <button class="menu-pill" aria-label="Wi-Fi">
+        <svg viewBox="0 0 16 12" width="16" height="12" aria-hidden="true">
+          <use href="#wifi" />
+        </svg>
+      </button>
+      <button class="menu-pill" aria-label="Search">
+        <svg viewBox="0 0 14 14" width="13" height="13" aria-hidden="true">
+          <use href="#search" />
+        </svg>
+      </button>
+      <span class="menu-pill" id="clock">--:--</span>
+    </div>
+  </header>
+
+  <!-- Desktop -->
+  <main class="desktop" id="desktop">
+    <!-- Windows -->
+    <div class="windows" id="windows">
+      <!-- README -->
+      <article class="window window--paper" data-window="readme">
+        <header class="titlebar" data-drag>
+          <div class="titlebar-controls">
+            <button class="ctrl ctrl--close" aria-label="Close"></button>
+            <button class="ctrl ctrl--min" aria-label="Minimize"></button>
+            <button class="ctrl ctrl--max" aria-label="Maximize"></button>
+          </div>
+          <div class="titlebar-title">README.md — swdrsk</div>
+        </header>
+        <div class="window-body">
+          <h1 class="display">Sawada<br />Ryosuke</h1>
+          <p class="lede">
+            Backend &amp; AI engineer. Mostly Python. Currently building AI-agent systems
+            at <a href="https://karakuri.ai" target="_blank" rel="noopener">KARAKURI</a>
+            + independent contract work.
+          </p>
+          <dl class="meta">
+            <dt>handle</dt>
+            <dd>@swdrsk</dd>
+            <dt>based</dt>
+            <dd>Tokyo, Japan</dd>
+            <dt>stack</dt>
+            <dd>Python · Django · FastAPI · Next · Nuxt · Flutter · AWS · PyTorch · Claude Code</dd>
+            <dt>since</dt>
+            <dd>2018</dd>
+          </dl>
+          <p class="note">
+            <span class="i18n-en">From large-scale SIer to startup co-founder to freelance / AI Engineer —
+              comfortable balancing speed and quality, and confident driving things end-to-end
+              from requirements through infrastructure and implementation.</span>
+            <span class="i18n-ja">東京大学を卒業後、大規模 SIer からスタートアップ共同創業を経てフリーランス・AIエンジニアへ。
+              スピード重視と品質重視のバランス感覚を持ち、要件定義から
+              インフラ・実装まで一気通貫で動く。</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- Terminal -->
+      <article class="window window--dark" data-window="terminal">
+        <header class="titlebar titlebar--dark" data-drag>
+          <div class="titlebar-controls">
+            <button class="ctrl ctrl--close" aria-label="Close"></button>
+            <button class="ctrl ctrl--min" aria-label="Minimize"></button>
+            <button class="ctrl ctrl--max" aria-label="Maximize"></button>
+          </div>
+          <div class="titlebar-title">ryosuke@swdrsk — bash — 80×24</div>
+        </header>
+        <div class="window-body terminal-body">
+          <div class="term" id="term"></div>
+        </div>
+      </article>
+
+      <!-- Career timeline -->
+      <article class="window window--paper" data-window="career">
+        <header class="titlebar" data-drag>
+          <div class="titlebar-controls">
+            <button class="ctrl ctrl--close" aria-label="Close"></button>
+            <button class="ctrl ctrl--min" aria-label="Minimize"></button>
+            <button class="ctrl ctrl--max" aria-label="Maximize"></button>
+          </div>
+          <div class="titlebar-title">Career.app</div>
+        </header>
+        <div class="window-body">
+          <ol class="timeline">
+            <li class="t-item" data-year="2026—">
+              <h3>KARAKURI Inc. <span class="role">R&amp;D Engineer</span></h3>
+              <p>
+                <span class="i18n-en">Pre-research, technology surveys, and prototyping for AI agents.
+                  Replicated published graph-reading AI work and built the first iteration of
+                  an AI-assistant system on the Strands SDK.</span>
+                <span class="i18n-ja">AI エージェントの先行研究・技術調査・プロトタイピング。
+                  グラフ読み取り AI の論文追試、Strands SDK を用いた
+                  AI アシスタントシステムの初版開発。</span>
+              </p>
+              <ul class="tags">
+                <li>Claude Code</li>
+                <li>Strands SDK</li>
+                <li>AWS</li>
+                <li>GCP</li>
+              </ul>
+            </li>
+            <li class="t-item t-item--expandable" data-year="2023—">
+              <h3>Freelance <span class="role">Backend Lead · Full-stack · AI</span></h3>
+              <p>
+                <span class="i18n-en">Backend lead across several concurrent projects: GenAI-assisted
+                  animation production, an EdTech SaaS, AI-driven video auto-editing, and
+                  feature additions to a major restaurant chain's mobile app backend.</span>
+                <span class="i18n-ja">生成 AI によるアニメ制作支援、教育 SaaS、動画自動編集、
+                  大手飲食チェーンのモバイルアプリのバックエンド機能追加など、
+                  バックエンドリードとして複数案件を並行。</span>
+              </p>
+              <ul class="tags">
+                <li>Django REST</li>
+                <li>FastAPI</li>
+                <li>Nuxt.js</li>
+                <li>Terraform</li>
+                <li>YOLO</li>
+              </ul>
+              <button class="t-toggle" type="button" aria-expanded="false">
+                <span class="t-chevron" aria-hidden="true"></span>
+                <span class="i18n-en t-toggle-label-show">show projects</span>
+                <span class="i18n-ja t-toggle-label-show">プロジェクト詳細を見る</span>
+                <span class="i18n-en t-toggle-label-hide">hide projects</span>
+                <span class="i18n-ja t-toggle-label-hide">閉じる</span>
+              </button>
+              <div class="t-extra">
+                <ol class="t-projects">
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">GenAI Animation Production &amp; Streaming Platform</span>
+                      <span class="i18n-ja">生成AIによるアニメ制作支援システム / 動画配信アプリ</span>
+                    </h4>
+                    <div class="t-proj-meta">2025.03 — 2025.09 · Backend Lead</div>
+                    <p>
+                      <span class="i18n-en">Owned the backend: tech stack selection, infra design,
+                        DB / API design, and implementation. Built AWS (RDS, S3, ECS, CodePipeline)
+                        via Terraform for both mobile and web. Researched generative-AI workflows
+                        and ran PoCs. Developed a Byteplus-powered streaming pipeline.</span>
+                      <span class="i18n-ja">技術選定、インフラ・DB・API 設計、開発を担当。
+                        モバイル/Web 向けインフラを Terraform で構築 (RDS, S3, ECS, CodePipeline)。
+                        生成 AI のトレンド調査・PoC、Byteplus を用いたストリーミング配信システム開発。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>Django REST</li>
+                      <li>AWS</li>
+                      <li>Terraform</li>
+                      <li>Byteplus</li>
+                    </ul>
+                  </li>
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">EdTech Web App</span>
+                      <span class="i18n-ja">教育系サービスの Web アプリ開発</span>
+                    </h4>
+                    <div class="t-proj-meta">2023.07 — present · Full-stack · 0.2 person-month</div>
+                    <p>
+                      <span class="i18n-en">Built end-to-end features: internal sales dashboard,
+                        watch-history feature, and a friend-referral coupon system. Plus
+                        ongoing bug fixes and enhancements.</span>
+                      <span class="i18n-ja">社内向け売上管理ダッシュボード、視聴履歴機能、
+                        友達紹介クーポン機能などをフロント・バック一気通貫で設計開発。
+                        バグ修正・機能アップデートも継続。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>Django REST</li>
+                      <li>Nuxt.js</li>
+                    </ul>
+                  </li>
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">AI Video Auto-Editing Platform &amp; Streaming App</span>
+                      <span class="i18n-ja">AI による動画自動編集システム / 動画配信アプリ</span>
+                    </h4>
+                    <div class="t-proj-meta">2023.07 — present · AI / Backend / PM</div>
+                    <p>
+                      <span class="i18n-en">API and DB design for the streaming app. Flask + Firebase
+                        / Firestore PoC. Built AWS infra (AppRunner, S3, Cognito). Developed
+                        auto-edit algorithms with YOLO, ran the batch pipeline on AWS Batch,
+                        and shipped a TencentCloud-based streaming flow. Drove the roadmap
+                        as PM via a Notion Gantt chart.</span>
+                      <span class="i18n-ja">動画配信アプリの API・DB 設計、Firebase + Firestore で
+                        Flask による PoC、AWS (AppRunner, S3, Cognito) のインフラ構築、
+                        YOLO 等を使った動画自動編集アルゴリズム開発、AWS Batch の AI 処理バッチ設計、
+                        TencentCloud によるストリーミング配信実装。Notion でロードマップ策定・PM を担当。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>Django REST</li>
+                      <li>AWS</li>
+                      <li>Firebase</li>
+                      <li>YOLO</li>
+                      <li>TencentCloud</li>
+                    </ul>
+                  </li>
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">Major Restaurant Chain — Mobile App Backend</span>
+                      <span class="i18n-ja">大手飲食チェーン モバイルアプリのバックエンド機能追加</span>
+                    </h4>
+                    <div class="t-proj-meta">2024.03 — 2025.03 · Backend · 1 person-month</div>
+                    <p>
+                      <span class="i18n-en">Implemented FastAPI feature endpoints and pytest unit
+                        tests. Chose the stack for PDF report generation and built an HTML+CSS
+                        rendering pipeline saving to GCS. Tuned a slow SQL query down to 20%
+                        of its original time via indexing strategy. Ran Locust load tests
+                        and sized CPU/memory for Cloud Run + Cloud SQL.</span>
+                      <span class="i18n-ja">FastAPI による機能要件 API 開発と pytest による UT 実装。
+                        帳票 PDF 出力の技術選定と PoC、html+css を使った帳票出力と GCS 保存を実装。
+                        スロークエリのチューニング・インデックス最適化で 20% に短縮。
+                        Locust による負荷試験を実施し、CloudRun・CloudSQL の適正な CPU/メモリを策定。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>FastAPI</li>
+                      <li>GCP</li>
+                      <li>pytest</li>
+                      <li>Locust</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </li>
+            <li class="t-item" data-year="2021—23">
+              <h3>Spilavo, Inc. <span class="role">Co-founder / Full-stack</span></h3>
+              <p>
+                <span class="i18n-en">Two-person company. Built and maintained a retail loyalty +
+                  pickup-reservation app end-to-end — from requirements through to AWS
+                  batch infrastructure.</span>
+                <span class="i18n-ja">2 人で創業。小売店向けポイント＆取り置き注文アプリを
+                  要件定義から AWS バッチ基盤までフルスタックで開発・保守。</span>
+              </p>
+              <ul class="tags">
+                <li>Flutter</li>
+                <li>Python</li>
+                <li>AWS</li>
+                <li>Docker</li>
+                <li>MySQL</li>
+              </ul>
+            </li>
+            <li class="t-item t-item--expandable" data-year="2018—20">
+              <h3>Simplex Inc. <span class="role">Quant Engineer</span></h3>
+              <p>
+                <span class="i18n-en">Worked on bond and derivative risk-management systems for banks
+                  and an insurance contract-management rollout. Served as UT/IT test lead
+                  and Scrum Master.</span>
+                <span class="i18n-ja">銀行向け債券／デリバティブのリスク管理システム、
+                  保険会社の契約管理システム導入案件などを担当。
+                  UT/IT テストリーダー、スクラムマスター経験あり。</span>
+              </p>
+              <ul class="tags">
+                <li>Java</li>
+                <li>MySQL</li>
+                <li>Salesforce / Apex</li>
+                <li>TypeScript</li>
+              </ul>
+              <button class="t-toggle" type="button" aria-expanded="false">
+                <span class="t-chevron" aria-hidden="true"></span>
+                <span class="i18n-en t-toggle-label-show">show projects</span>
+                <span class="i18n-ja t-toggle-label-show">プロジェクト詳細を見る</span>
+                <span class="i18n-en t-toggle-label-hide">hide projects</span>
+                <span class="i18n-ja t-toggle-label-hide">閉じる</span>
+              </button>
+              <div class="t-extra">
+                <ol class="t-projects">
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">Insurance Contract Management System — Rollout</span>
+                      <span class="i18n-ja">保険会社向け 契約管理システム 導入案件</span>
+                    </h4>
+                    <div class="t-proj-meta">2020.04 — · ~10 person team</div>
+                    <p>
+                      <span class="i18n-en">Designed, implemented, authored test cases, and ran tests
+                        for an insurance contract management system rollout.</span>
+                      <span class="i18n-ja">設計・開発・テストケース作成・テスト実施を担当。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>Salesforce</li>
+                      <li>Apex</li>
+                      <li>TypeScript</li>
+                      <li>Java</li>
+                    </ul>
+                  </li>
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">Bank — Bond Risk &amp; Position Management System</span>
+                      <span class="i18n-ja">銀行向け 債券系金融商品 リスク管理・ポジション管理システム 導入案件</span>
+                    </h4>
+                    <div class="t-proj-meta">2019.04 — · ~60 person team · large scale</div>
+                    <p>
+                      <span class="i18n-en">Led UT and IT-1 testing for one feature (8-person sub-team).
+                        Authored and ran IT-2 test cases. Served as Scrum Master leading
+                        development of an in-house reporting tool (5-person team).</span>
+                      <span class="i18n-ja">1 機能の UT・IT1 テストリーダー (8 人チーム)、
+                        IT2 テストケース作成・テスト実施、帳票作成ツール開発の
+                        スクラムマスター (5 人チーム) を担当。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>MySQL</li>
+                      <li>Java</li>
+                    </ul>
+                  </li>
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">Bank — Derivatives Risk Management (Enhancement)</span>
+                      <span class="i18n-ja">銀行向け デリバティブ金融商品 リスク管理システム エンハンス案件</span>
+                    </h4>
+                    <div class="t-proj-meta">2019.01 — · numerical validation team</div>
+                    <p>
+                      <span class="i18n-en">Authored and executed numerical-validation test data on the
+                        numerical verification team.</span>
+                      <span class="i18n-ja">数値検証チームにてテストデータ作成・打鍵を担当。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>Excel</li>
+                    </ul>
+                  </li>
+                  <li class="t-proj">
+                    <h4>
+                      <span class="i18n-en">In-House — Generic Financial Product Position &amp; Risk System</span>
+                      <span class="i18n-ja">汎用的な金融商品 ポジション管理・リスク管理システム 自社開発</span>
+                    </h4>
+                    <div class="t-proj-meta">2018.09 — · ~15 person team</div>
+                    <p>
+                      <span class="i18n-en">Research and development support for an in-house generic
+                        financial product position / risk management system.</span>
+                      <span class="i18n-ja">調査・開発支援を担当。</span>
+                    </p>
+                    <ul class="tags tags--sm">
+                      <li>Excel</li>
+                      <li>Python</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </li>
+            <li class="t-item" data-year="2011—18">
+              <h3><span class="i18n-en">The University of Tokyo</span><span class="i18n-ja">東京大学</span>
+                <span class="role">B.Eng. / M.Eng.</span>
+              </h3>
+              <p>
+                <span class="i18n-en">Mechano-Informatics, Faculty of Engineering → Master's in
+                  Intelligent Mechanical Informatics. Interned at Toyota IT Development
+                  Center on driving big-data analytics.</span>
+                <span class="i18n-ja">工学部 機械情報工学科 → 大学院 知能機械情報学専攻。
+                  在学中はインターンとしてトヨタ IT 開発センターで走行ビッグデータ解析を担当。</span>
+              </p>
+              <ul class="tags">
+                <li>Statistics</li>
+                <li>Python</li>
+                <li>R&amp;D Internship</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- Skills -->
+      <article class="window window--paper" data-window="skills">
+        <header class="titlebar" data-drag>
+          <div class="titlebar-controls">
+            <button class="ctrl ctrl--close" aria-label="Close"></button>
+            <button class="ctrl ctrl--min" aria-label="Minimize"></button>
+            <button class="ctrl ctrl--max" aria-label="Maximize"></button>
+          </div>
+          <div class="titlebar-title">Skills.cfg</div>
+        </header>
+        <div class="window-body">
+          <h2 class="section-h">// stack</h2>
+          <ul class="skills">
+            <li><span class="sk-name">Python</span><span class="sk-meta">Django · FastAPI · 5y+</span><span
+                class="sk-bar" data-fill="95"></span></li>
+            <li><span class="sk-name">MySQL</span><span class="sk-meta">design · tuning · 5y+</span><span class="sk-bar"
+                data-fill="95"></span></li>
+            <li><span class="sk-name">AWS</span><span class="sk-meta">ECS · Lambda · RDS · S3 · 5y+</span><span
+                class="sk-bar" data-fill="95"></span></li>
+            <li><span class="sk-name">Next.js / Nuxt.js</span><span class="sk-meta">3y</span><span class="sk-bar"
+                data-fill="75"></span></li>
+            <li><span class="sk-name">Flutter / Dart</span><span class="sk-meta">2y</span><span class="sk-bar"
+                data-fill="70"></span></li>
+            <li><span class="sk-name">Terraform</span><span class="sk-meta">IaC · 1y</span><span class="sk-bar"
+                data-fill="62"></span></li>
+            <li><span class="sk-name">PyTorch / AI</span><span class="sk-meta">YOLO · Strands SDK</span><span
+                class="sk-bar" data-fill="66"></span></li>
+            <li><span class="sk-name">Java (JavaEE)</span><span class="sk-meta">1y</span><span class="sk-bar"
+                data-fill="55"></span></li>
+          </ul>
+
+          <h2 class="section-h">// certifications</h2>
+          <ul class="certs">
+            <li>
+              <span class="i18n-en">Applied Info. Tech. Engineer</span>
+              <span class="i18n-ja">応用情報技術者</span>
+            </li>
+            <li>
+              <span class="i18n-en">Statistics Test Grade 1</span>
+              <span class="i18n-ja">統計検定 1 級</span>
+            </li>
+            <li>AWS SAA</li>
+            <li>
+              <span class="i18n-en">Registered Info. Sec. Specialist</span>
+              <span class="i18n-ja">情報処理安全確保支援士</span>
+            </li>
+            <li>TOEIC 760</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Projects (Finder list) -->
+      <article class="window window--paper" data-window="projects">
+        <header class="titlebar" data-drag>
+          <div class="titlebar-controls">
+            <button class="ctrl ctrl--close" aria-label="Close"></button>
+            <button class="ctrl ctrl--min" aria-label="Minimize"></button>
+            <button class="ctrl ctrl--max" aria-label="Maximize"></button>
+          </div>
+          <div class="titlebar-title">Projects/ — 6 items</div>
+        </header>
+        <div class="window-body">
+          <table class="finder">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Stack</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🤖 AI Assistant (Strands SDK)</td>
+                <td>R&amp;D</td>
+                <td>Python · AWS · Strands</td>
+                <td>2026</td>
+              </tr>
+              <tr>
+                <td>🎞 GenAI Animation &amp; Streaming</td>
+                <td>Backend Lead</td>
+                <td>Django REST · Terraform · Byteplus</td>
+                <td>2025</td>
+              </tr>
+              <tr>
+                <td>🍴 Restaurant chain mobile API enhancement</td>
+                <td>Backend</td>
+                <td>FastAPI · GCP · Locust</td>
+                <td>2024</td>
+              </tr>
+              <tr>
+                <td>🎬 AI Video Auto-Editing Platform</td>
+                <td>AI / Backend / PM</td>
+                <td>Django · YOLO · AWS Batch</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td>📚 EdTech Web App</td>
+                <td>Full-stack</td>
+                <td>Django REST · Nuxt.js</td>
+                <td>2023</td>
+              </tr>
+              <tr>
+                <td>🏬 Retail Loyalty &amp; Reservation App</td>
+                <td>Co-founder / Full-stack</td>
+                <td>Flutter · Python · AWS</td>
+                <td>2021</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="caption">
+            <span class="i18n-en">↑ click rows soon — full case studies in progress.</span>
+            <span class="i18n-ja">↑ 各プロジェクトのケーススタディは準備中です。</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- Contact -->
+      <article class="window window--paper" data-window="contact">
+        <header class="titlebar" data-drag>
+          <div class="titlebar-controls">
+            <button class="ctrl ctrl--close" aria-label="Close"></button>
+            <button class="ctrl ctrl--min" aria-label="Minimize"></button>
+            <button class="ctrl ctrl--max" aria-label="Maximize"></button>
+          </div>
+          <div class="titlebar-title">Contact.card</div>
+        </header>
+        <div class="window-body contact">
+          <p class="contact-tag">// say hello</p>
+          <ul class="links">
+            <li>
+              <a href="https://github.com/swdrsk" target="_blank" rel="noopener">
+                <span class="lk-key">github</span>
+                <span class="lk-val">@swdrsk →</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:r.sawada93@gmail.com">
+                <span class="lk-key">email</span>
+                <span class="lk-val">r.sawada93@gmail.com →</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://swdrsker.hatenablog.com/" target="_blank" rel="noopener">
+                <span class="lk-key">blog</span>
+                <span class="lk-val">hatena/swdrsker →</span>
+              </a>
+            </li>
+          </ul>
+          <p class="finger">
+            <span class="cursor-block" aria-hidden="true"></span>
+            <span class="i18n-en">available for development work, consulting &amp; advisory.</span>
+            <span class="i18n-ja">開発のご依頼・コンサル・アドバイザリーのご相談、お気軽にどうぞ。</span>
+          </p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Dock -->
+  <nav class="dock" aria-label="Dock">
+    <button class="dockicon dockicon--readme" data-open="readme" title="README">
+      <span class="di-glyph">
+        <svg viewBox="0 0 24 28" width="34" height="40" aria-hidden="true">
+          <use href="#dock-readme" />
+        </svg>
+      </span>
+      <span class="di-name">README</span>
+      <span class="di-dot"></span>
+    </button>
+
+    <button class="dockicon dockicon--career" data-open="career" title="Career">
+      <span class="di-glyph">
+        <svg viewBox="0 0 32 28" width="40" height="36" aria-hidden="true">
+          <use href="#dock-career" />
+        </svg>
+      </span>
+      <span class="di-name">Career</span>
+      <span class="di-dot"></span>
+    </button>
+
+    <button class="dockicon dockicon--skills" data-open="skills" title="Skills">
+      <span class="di-glyph">
+        <svg viewBox="0 0 32 32" width="38" height="38" aria-hidden="true">
+          <use href="#dock-skills" />
+        </svg>
+      </span>
+      <span class="di-name">Skills</span>
+      <span class="di-dot"></span>
+    </button>
+
+    <button class="dockicon dockicon--projects" data-open="projects" title="Projects">
+      <span class="di-glyph">
+        <svg viewBox="0 0 32 28" width="40" height="36" aria-hidden="true">
+          <use href="#dock-projects" />
+        </svg>
+      </span>
+      <span class="di-name">Projects</span>
+      <span class="di-dot"></span>
+    </button>
+
+    <button class="dockicon dockicon--terminal" data-open="terminal" title="Terminal">
+      <span class="di-glyph">
+        <svg viewBox="0 0 32 28" width="40" height="36" aria-hidden="true">
+          <use href="#dock-terminal" />
+        </svg>
+      </span>
+      <span class="di-name">Terminal</span>
+      <span class="di-dot"></span>
+    </button>
+
+    <span class="dock-divider" aria-hidden="true"></span>
+
+    <button class="dockicon dockicon--contact" data-open="contact" title="Contact">
+      <span class="di-glyph">
+        <svg viewBox="0 0 32 28" width="40" height="36" aria-hidden="true">
+          <use href="#dock-contact" />
+        </svg>
+      </span>
+      <span class="di-name">Contact</span>
+      <span class="di-dot"></span>
+    </button>
+
+    <a class="dockicon dockicon--github" href="https://github.com/swdrsk" target="_blank" rel="noopener"
+      title="GitHub @swdrsk">
+      <span class="di-glyph">
+        <svg viewBox="0 0 32 32" width="38" height="38" aria-hidden="true">
+          <use href="#dock-github" />
+        </svg>
+      </span>
+      <span class="di-name">GitHub</span>
+    </a>
+
+    <span class="dock-divider" aria-hidden="true"></span>
+
+    <button class="dockicon dockicon--trash" title="Trash">
+      <span class="di-glyph">
+        <svg viewBox="0 0 28 32" width="34" height="38" aria-hidden="true">
+          <use href="#dock-trash" />
+        </svg>
+      </span>
+      <span class="di-name">Trash</span>
+    </button>
+  </nav>
+
+  <script src="scripts/system.js"></script>
+  <script src="scripts/windows.js"></script>
+  <script src="scripts/effects.js"></script>
+</body>
+
+</html>

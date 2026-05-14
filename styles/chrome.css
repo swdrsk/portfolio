@@ -1,0 +1,217 @@
+/* ============================================================
+ *  chrome.css — menubar, theme/lang toggles, dock
+ * ============================================================ */
+
+/* ----- Menu bar ----- */
+.menubar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  padding: 0 14px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  z-index: 9000;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 0.5px solid var(--hairline);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+}
+.menubar-left,
+.menubar-right {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+}
+.menu-item {
+  background: transparent;
+  border: 0;
+  padding: 0 9px;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  transition: background 0.18s ease;
+}
+.menu-item:hover { background: var(--hover-bg); }
+.menu-app { font-weight: 700; }
+.menu-apple { padding: 0 8px; }
+.menu-apple svg { margin-top: 1px; }
+
+.menu-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 9px;
+  margin: 4px 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+  font-size: 12.5px;
+  transition: background 0.18s;
+}
+.menu-pill:hover { background: var(--hover-bg); }
+.menu-pill svg { opacity: 0.85; }
+#clock { padding: 0 10px; cursor: default; }
+
+/* ----- Theme toggle — show "what you'll switch TO" ----- */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html[data-theme="light"] .theme-toggle .icon-moon { display: inline-block; }
+html[data-theme="dark"]  .theme-toggle .icon-sun  { display: inline-block; }
+.theme-toggle:hover svg  { transform: rotate(20deg) scale(1.1); }
+
+/* ----- Language toggle ----- */
+.lang-toggle {
+  font-family: var(--mono);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 11.5px;
+  min-width: 28px;
+  justify-content: center;
+  position: relative;
+}
+.lang-toggle .lang-label::after {
+  content: "JA";
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html[data-lang="ja"] .lang-toggle .lang-label::after { content: "EN"; }
+.lang-toggle:hover .lang-label::after {
+  transform: translateY(-1px) scale(1.08);
+}
+
+/* ============================================================
+ *  Desktop wrapper
+ * ============================================================ */
+.desktop {
+  position: fixed;
+  inset: 28px 0 0 0;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* ============================================================
+ *  Dock — Liquid Glass bottom bar
+ * ============================================================ */
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  z-index: 8900;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 8px 10px;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(180%);
+  border-radius: 22px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 0 0 0.5px rgba(255, 255, 255, 0.18) inset,
+    0 0 0 0.5px var(--hairline),
+    0 22px 50px -16px rgba(0, 0, 0, 0.4);
+  animation: dockIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+@keyframes dockIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%); }
+}
+.dockicon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transform-origin: bottom center;
+  transition:
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dockicon .di-glyph {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 10px rgba(10, 10, 12, 0.28));
+  transform-origin: bottom center;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dockicon:hover .di-glyph {
+  transform: translateY(-12px) scale(1.35);
+}
+.dockicon:hover + .dockicon .di-glyph,
+.dockicon:has(+ .dockicon:hover) .di-glyph {
+  transform: translateY(-4px) scale(1.12);
+}
+.dockicon:active .di-glyph { transform: translateY(-8px) scale(1.22); }
+
+.di-name {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -4px);
+  margin-bottom: 6px;
+  z-index: 20;
+  padding: 5px 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11.5px;
+  color: var(--ink);
+  background: var(--glass-3);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow:
+    0 0 0 0.5px var(--hairline),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+}
+.dockicon:hover .di-name {
+  opacity: 1;
+  transform: translate(-50%, -10px);
+}
+.di-dot {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  opacity: 0.8;
+}
+.dock-divider {
+  width: 1px;
+  height: 36px;
+  margin: 8px 4px;
+  align-self: center;
+  background: var(--hairline-strong);
+}

@@ -1,0 +1,191 @@
+/* ============================================================
+ *  base.css — design tokens (theme), reset, body, boot screen
+ * ============================================================ */
+
+:root,
+html[data-theme="light"] {
+  /* base */
+  --bg-base:    #ece4d2;
+  --bg-tone:    #f5efe0;
+  --ink:        #0a0a0c;
+  --ink-soft:   rgba(10, 10, 12, 0.66);
+  --ink-mute:   rgba(10, 10, 12, 0.42);
+  --hairline:   rgba(10, 10, 12, 0.12);
+  --hairline-strong: rgba(10, 10, 12, 0.2);
+
+  /* glass surfaces */
+  --glass:      rgba(255, 255, 255, 0.55);
+  --glass-2:    rgba(255, 252, 244, 0.72);
+  --glass-3:    rgba(255, 255, 255, 0.88);
+  --glass-tint: rgba(255, 255, 255, 0.4);
+  --glass-soft: rgba(255, 255, 255, 0.55);
+
+  /* surfaces / interaction */
+  --surface-soft:    rgba(255, 255, 255, 0.6);
+  --surface-pill:    rgba(255, 255, 255, 0.65);
+  --hover-bg:        rgba(10, 10, 12, 0.08);
+  --hover-accent:    rgba(10, 132, 255, 0.1);
+  --scroll-thumb:        rgba(10, 10, 12, 0.22);
+  --scroll-thumb-hover:  rgba(10, 10, 12, 0.4);
+  --tag-hover-bg:    rgba(10, 132, 255, 0.12);
+  --tag-hover-ring:  rgba(10, 132, 255, 0.4);
+  --title-bg-top:    rgba(255, 255, 255, 0.4);
+  --title-bg-bot:    rgba(255, 255, 255, 0.1);
+  --body-fade-top:   rgba(255, 255, 255, 0.35);
+  --body-fade-mid:   rgba(255, 255, 255, 0.05);
+  --timeline-line:   rgba(10, 10, 12, 0.18);
+  --dot-grad-top:    #ffffff;
+  --dot-grad-bot:    #e3e5ea;
+  --finder-head-bg:  rgba(255, 255, 255, 0.42);
+
+  /* terminal */
+  --term-bg:    rgba(20, 20, 24, 0.82);
+  --term-fg:    #c8f7c0;
+  --term-fg-dim: #84a884;
+
+  /* accents */
+  --accent:     #0a84ff;
+  --accent-warm:#ff6b00;
+  --accent-pink:#ff2d92;
+  --accent-violet:#bf5af2;
+  --accent-mint:#30d9a8;
+
+  /* traffic lights */
+  --tl-red:    #ff5f57;
+  --tl-yellow: #febc2e;
+  --tl-green:  #28c840;
+
+  /* display heading gradient */
+  --display-top: #0a0a0c;
+  --display-bot: #5a5a64;
+
+  --radius-win: 14px;
+  --radius-pill: 999px;
+
+  --shadow-win:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 0 0 0.5px rgba(255, 255, 255, 0.5) inset,
+    0 0 0 1px rgba(10, 10, 12, 0.08),
+    0 30px 60px -20px rgba(10, 10, 12, 0.35),
+    0 12px 24px -8px rgba(10, 10, 12, 0.18);
+
+  --shadow-glass:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 0 0 0.5px rgba(255, 255, 255, 0.35) inset,
+    0 0 0 0.5px rgba(10, 10, 12, 0.1),
+    0 12px 30px -8px rgba(10, 10, 12, 0.22);
+
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text",
+           "Helvetica Neue", sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display: "Unbounded", "Inter", -apple-system, sans-serif;
+}
+
+html[data-theme="dark"] {
+  --bg-base:    #07091a;
+  --bg-tone:    #0f1430;
+  --ink:        #f4f4f6;
+  --ink-soft:   rgba(244, 244, 246, 0.72);
+  --ink-mute:   rgba(244, 244, 246, 0.46);
+  --hairline:   rgba(244, 244, 246, 0.12);
+  --hairline-strong: rgba(244, 244, 246, 0.22);
+
+  --glass:      rgba(40, 40, 50, 0.55);
+  --glass-2:    rgba(26, 26, 32, 0.66);
+  --glass-3:    rgba(36, 36, 46, 0.82);
+  --glass-tint: rgba(60, 60, 70, 0.42);
+  --glass-soft: rgba(255, 255, 255, 0.06);
+
+  --surface-soft:    rgba(255, 255, 255, 0.06);
+  --surface-pill:    rgba(255, 255, 255, 0.08);
+  --hover-bg:        rgba(255, 255, 255, 0.1);
+  --hover-accent:    rgba(10, 132, 255, 0.18);
+  --scroll-thumb:        rgba(255, 255, 255, 0.18);
+  --scroll-thumb-hover:  rgba(255, 255, 255, 0.36);
+  --tag-hover-bg:    rgba(10, 132, 255, 0.22);
+  --tag-hover-ring:  rgba(10, 132, 255, 0.55);
+  --title-bg-top:    rgba(255, 255, 255, 0.06);
+  --title-bg-bot:    rgba(255, 255, 255, 0);
+  --body-fade-top:   rgba(255, 255, 255, 0.05);
+  --body-fade-mid:   rgba(255, 255, 255, 0);
+  --timeline-line:   rgba(244, 244, 246, 0.2);
+  --dot-grad-top:    #3a3a44;
+  --dot-grad-bot:    #1c1c22;
+  --finder-head-bg:  rgba(255, 255, 255, 0.04);
+
+  --term-bg:    rgba(10, 10, 14, 0.78);
+
+  --display-top: #ffffff;
+  --display-bot: #9a9aa6;
+
+  --shadow-win:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 0 0 0.5px rgba(255, 255, 255, 0.06) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.45),
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 12px 24px -8px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  overflow: hidden;
+  letter-spacing: -0.005em;
+  transition: background 0.5s ease, color 0.4s ease;
+}
+
+/* ----- i18n visibility ----- */
+html[data-lang="en"] .i18n-ja { display: none !important; }
+html[data-lang="ja"] .i18n-en { display: none !important; }
+
+/* ============================================================
+ *  Boot screen
+ * ============================================================ */
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: linear-gradient(180deg, #1a1a20 0%, #0d0d10 100%);
+  color: #f4f4f6;
+  display: grid;
+  place-items: center;
+  animation: bootFade 2.2s ease 1.6s forwards;
+}
+.boot-inner { text-align: center; }
+.boot-logo {
+  display: block;
+  margin: 0 auto 38px;
+  color: #f4f4f6;
+  animation: bootLogoIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.boot-bar {
+  width: 180px;
+  height: 5px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.boot-bar span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #fff, #cfd8ff);
+  border-radius: 999px;
+  animation: bootFill 2s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+@keyframes bootFade { to { opacity: 0; visibility: hidden; } }
+@keyframes bootFill { to { width: 100%; } }
+@keyframes bootLogoIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes cursorBlink { 50% { opacity: 0; } }
