@@ -48,6 +48,21 @@
   .menubar-right .menu-pill[aria-label="Search"] { display: none; }
   .windows { max-width: 100%; }
   .display { font-size: clamp(36px, 11vw, 56px); }
+
+  /* Skills.cfg — drop the meta column, keep name + bar.
+     The meta info is preserved as a <li title="…"> tooltip. */
+  .skills li {
+    grid-template-columns: 1fr 100px;
+  }
+  .sk-meta { display: none; }
+}
+
+/* On the narrowest phones, drop the bar too — name only */
+@media (max-width: 420px) {
+  .skills li {
+    grid-template-columns: 1fr;
+  }
+  .sk-bar { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
