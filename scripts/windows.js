@@ -8,11 +8,14 @@
 
   /* ---------- focus stacking ---------- */
   let z = 100;
+  const allWindows = document.querySelectorAll(".window");
   const focusWindow = (win) => {
     z += 1;
     win.style.zIndex = z;
+    allWindows.forEach((w) => w.classList.remove("is-focused"));
+    win.classList.add("is-focused");
   };
-  document.querySelectorAll(".window").forEach((win) => {
+  allWindows.forEach((win) => {
     win.addEventListener("mousedown", () => focusWindow(win));
   });
 
