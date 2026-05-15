@@ -143,8 +143,7 @@
           <feMorphology in="goo" operator="erode" radius="15" result="eroded" />
           <feGaussianBlur in="eroded" stdDeviation="20" result="innerSoft" />
           <feFlood flood-color="#000" flood-opacity="0.4" result="darkness" />
-          <feComposite in="darkness" in2="innerSoft" operator="in"
-            result="innerDark" />
+          <feComposite in="darkness" in2="innerSoft" operator="in" result="innerDark" />
           <feComposite in="innerDark" in2="goo" operator="over" />
         </filter>
 
@@ -157,8 +156,8 @@
                       0 1 0 0 0
                       0 0 1 0 0
                       0 0 0 20 -9" result="goo" />
-          <feDiffuseLighting in="blur" surfaceScale="28" diffuseConstant="1.25"
-            lighting-color="#ffffff" result="diffuse">
+          <feDiffuseLighting in="blur" surfaceScale="28" diffuseConstant="1.25" lighting-color="#ffffff"
+            result="diffuse">
             <feDistantLight azimuth="0" elevation="90" />
           </feDiffuseLighting>
           <feComposite in="diffuse" in2="goo" operator="in" result="diffMasked" />
@@ -258,7 +257,7 @@
           <p class="lede">
             Backend &amp; AI engineer. Mostly Python. Currently building AI-agent systems
             at <a href="https://karakuri.ai" target="_blank" rel="noopener">KARAKURI</a>
-            + independent contract work.
+            + independent contract work as full-stack developer.
           </p>
           <dl class="meta">
             <dt>handle</dt>
